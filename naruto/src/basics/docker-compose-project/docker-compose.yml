@@ -1,10 +1,14 @@
-version: '3'
-services: 
+version: '3' #version of docker compose
+services:  # service is a type of container
     redis-server: 
         image: 'redis'
     
     node-app:
         build: .
+        restart: always #always - restart regardless of exit status of app.
+        #on-failure - restart only when exit status != 0
+        #"no" - never restart - default
+        #Unlesss-stopped - always restart unless devs focribly stop
         ports:
-            - "4001:8081"
-
+            - "4001:8081" #local system : docker container port
+            
